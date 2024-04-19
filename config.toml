@@ -1,0 +1,71 @@
+theme="everforest_dark"
+
+[editor]
+# 相对行号
+line-number = "relative"
+# 高亮所在行
+cursorline = true
+# 左侧留显示空间
+gutters = ["diagnostics","line-numbers","spacer"]
+# 超过一个缓存区的时候显示标签
+bufferline = "multiple"
+# 根据模式给指示器上色
+color-modes = true
+# 显式代码 ruler , 方便格式化代码 
+rulers = [120]
+
+#不同模式下的光标
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+# 底部空间的显示
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name","spinner"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.file-picker]
+hidden = false
+
+# 空格的显示
+# or control each character
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline = "⏎"
+tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+# 垂直辅助线渲染
+
+[editor.indent-guides]
+render = true
+character = "╎" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+# 快捷键映射
+[keys.normal]
+# buffer 快速切换
+C-h = ":bp" 
+C-l = ":buffer-next" 
+# "backspace" = {r = ":sh cargo run"}
+# "backspace" = {s = [":w", ":config-reload"]}
+# "backspace" = {c = [":config-open"]}
+
+[keys.insert]
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+#mac 自动且英文
+
+# macos 自动切换到英文环境
+"esc" = [":sh macism com.apple.keylayout.ABC", "normal_mode"]
